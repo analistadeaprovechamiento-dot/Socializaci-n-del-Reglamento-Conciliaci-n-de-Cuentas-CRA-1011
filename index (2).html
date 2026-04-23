@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socialización del Reglamento Conciliación de Cuentas CRA 1011</title>
+    <style>
+        :root {
+            --primary-green: #2e7d32; 
+            --secondary-green: #4caf50; 
+            --light-green: #e8f5e9; 
+            --hover-bg: #f4faeb; 
+            --hover-title: #1565c0; /* Color azul para el título al hacer hover */
+            --text-dark: #333333;
+            --text-light: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* ENCABEZADO ESTILO EJECUTIVO */
+        header {
+            background-color: #ffffff;
+            color: var(--primary-green);
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-bottom: 4px solid var(--primary-green);
+        }
+
+        header img {
+            max-height: 70px;
+            margin-right: 25px;
+        }
+
+        .header-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header-text h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: var(--primary-green);
+        }
+
+        .header-text p {
+            margin: 5px 0 0 0;
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .intro {
+            text-align: justify;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+            background-color: white;
+            padding: 20px;
+            border-left: 5px solid var(--primary-green);
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        /* ESTILOS PARA EL ORDEN DEL DÍA */
+        .agenda-section {
+            background-color: white;
+            border-top: 5px solid var(--primary-green);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .agenda-section h2 {
+            color: var(--primary-green);
+            margin-top: 0;
+            font-size: 1.6rem;
+            text-align: center;
+            border-bottom: 2px solid var(--light-green);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .agenda-section ol {
+            padding-left: 40px;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        .agenda-section li {
+            margin-bottom: 15px;
+            padding-left: 10px;
+        }
+
+        .agenda-section li::marker {
+            color: var(--primary-green);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* TÍTULOS DE SECCIÓN */
+        .section-title {
+            color: var(--primary-green);
+            font-size: 1.8rem;
+            border-bottom: 3px solid var(--secondary-green);
+            padding-bottom: 10px;
+            margin-top: 50px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ESTILOS PARA LAS TARJETAS */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-top: 5px solid var(--secondary-green);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: left;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, background-color 0.3s ease, z-index 0.3s;
+        }
+
+        /* EFECTO HOVER: Sobresale, se superpone y cambia de color de fondo */
+        .card:hover {
+            transform: translateY(-12px) scale(1.04);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            background-color: var(--hover-bg);
+            border-top: 5px solid var(--primary-green);
+            z-index: 10;
+        }
+
+        .card-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 15px auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .card-image-contain {
+            width: 100%;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 15px;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-icon, .card:hover .card-image-contain {
+            transform: scale(1.1);
+        }
+
+        /* ESTILO DEL TÍTULO DE LA TARJETA CON TRANSICIÓN DE COLOR */
+        .card h2 {
+            color: var(--primary-green);
+            margin-top: 0;
+            font-size: 1.25rem;
+            border-bottom: 2px solid var(--light-green);
+            padding-bottom: 5px;
+            text-align: center; 
+            transition: color 0.3s ease;
+        }
+
+        .card-subtitle {
+            text-align: center;
+            color: var(--secondary-green);
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+
+        .card:hover h2 {
+            color: var(--hover-title);
+        }
+
+        .card ul {
+            padding-left: 20px;
+            font-size: 0.95rem;
+        }
+
+        .card li {
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+
+        /* ESTILOS PARA LA SECCIÓN DE PARTICIPACIÓN */
+        .participation-section {
+            background-color: var(--light-green);
+            border: 2px dashed var(--primary-green);
+            border-radius: 8px;
+            padding: 40px 30px;
+            margin-top: 60px;
+            margin-bottom: 50px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .participation-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .participation-icon {
+            width: 130px; 
+            height: 130px; 
+            margin: 0 auto 20px auto;
+            display: block;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .participation-section:hover .participation-icon {
+            transform: scale(1.15) rotate(-5deg); 
+        }
+
+        .participation-section h2 {
+            color: var(--primary-green);
+            margin-top: 0;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .participation-section p {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+        }
+
+        .participation-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .participation-list li {
+            background-color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            border: 2px solid var(--secondary-green);
+            color: var(--primary-green);
+            font-weight: bold;
+            font-size: 1.15rem;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .participation-list li:hover {
+            background-color: var(--primary-green);
+            color: white;
+            cursor: default;
+        }
+
+        footer {
+            background-color: var(--primary-green);
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="https://www.bioagricoladelllano.com.co/imagenes/conoce_factura/verticalcolor.png" alt="Logo Bioagrícola del Llano">
+        <div class="header-text">
+            <h1>Socialización del Reglamento Conciliación de Cuentas CRA 1011</h1>
+            <p>Bioagrícola del Llano S.A. E.S.P. BIC y las Organizaciones de Recicladores de Oficio (ORO)
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="intro">
+            <p><strong>Objeto del Reglamento (Art. 1):</strong> El presente documento tiene por objeto la conformación y desarrollo del Comité de Conciliación de Cuentas a efectos de revisar y conciliar las cuentas y demás aspectos que surjan como consecuencia de la facturación, recaudo, devoluciones, recuperación de cartera y traslado de los recursos relacionados con la actividad de aprovechamiento. Este reglamento se rige en armonía con la metodología tarifaria vigente expedida por la Comisión de Regulación de Agua Potable y Saneamiento Básico, el Decreto 1077 de 2015, la Ley 142 de 1994, y las órdenes de la Corte Constitucional respecto de la población recicladora.</p>
+        </div>
+
+        <div class="agenda-section">
+            <h2>Orden del Día</h2>
+            <ol>
+                <li>Socialización de las modificaciones del Reglamento de Conciliación de Cuentas.</li>
+                <li>Presentación y validación de la propuesta de reglamento.</li>
+                <li>Espacio para comentarios y observaciones de los asistentes.</li>
+                <li>Conclusiones y acuerdos.</li>
+                <li>Clausura de la socialización.</li>
+            </ol>
+        </div>
+
+        <h2 class="section-title">1. Cambios Normativos de la Resolución</h2>
+        <div class="card-grid">
+
+            <div class="card">
+                <img src="https://www.aprendemas.com/mx/blog/images/2016/02/razones_caminos.jpg" alt="Imagen Criterios" class="card-image-contain">
+                <h2>Criterios Orientadores (Art. 3)</h2>
+                <ul>
+                    <li>Las partes deben actuar bajo los principios de transparencia, colaboración armónica y celeridad en la ejecución de los compromisos derivados de las sesiones del Comité de Conciliación de Cuentas.</li>
+                    <li>Aplicación de los criterios diferenciales y las acciones afirmativas a favor de los Recicladores de Oficio.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <img src="https://cdn-icons-png.flaticon.com/512/2471/2471859.png" alt="Icono Deberes" class="card-icon">
+                <h2>Deberes Persona Prestadora de la Actividad de Aprovechamiento (Art. 4)</h2>
+                <ul>
+                    <li><strong>Literal H:</strong> Revisar las cuentas calculadas y liquidadas del prestador de recolección y transporte de residuos sólidos no aprovechables, antes de la sesión del Comité de Conciliación de Cuentas.</li>
+                    <li><strong>Literal I:</strong> En el caso de no estar de acuerdo con los cálculos, se deberá remitir, por lo menos con tres (3) días de anticipación de la sesión, la reliquidación correspondiente en archivo editable y/u observaciones.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <img src="https://cdn-icons-png.flaticon.com/512/11993/11993452.png" alt="Icono Cruce de Cuentas" class="card-icon">
+                <h2>Capítulo 2. De las Devoluciones</h2>
+                <div class="card-subtitle">Cruce de Cuentas (Art. 35)</div>
+                <ul>
+                    <li><strong>Devoluciones entre prestadores:</strong> Las devoluciones por ajustes tarifarios entre prestadores de la actividad de aprovechamiento facultan a BIOAGRICOLA a realizar el cruce de cuentas en el siguiente comité para asegurar la correcta remuneración tarifaria.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <img src="https://cdn-icons-png.flaticon.com/512/1008/1008928.png" alt="Icono Prohibiciones" class="card-icon">
+                <h2>Prohibiciones de las Partes (Art. 6)</h2>
+                <ul>
+                    <li>Abstenerse de incurrir en conductas que afecten el equilibrio de la relación contractual o limiten injustificadamente los derechos de la contraparte.</li>
+                    <li>No imponer condiciones o restricciones unilaterales ni afectar los derechos económicos o procedimentales de la otra parte.</li>
+                    <li>Prohibición de utilizar el Comité para discutir asuntos ajenos a la facturación, recaudo, devoluciones, recuperación de cartera y traslado de recursos.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <img src="https://cdn-icons-png.flaticon.com/512/2913/2913133.png" alt="Icono Protección de Datos" class="card-icon">
+                <h2>Protección de Datos (Art. 39 y 41)</h2>
+                <ul>
+                    <li>Prestadores de recolección de residuos no aprovechables: Deben garantizar la seguridad y privacidad de todos los datos confidenciales que se encuentren bajo su administración o custodia.</li>
+                    <li>Prestadores de aprovechamiento (reciclaje): Deben proteger cualquier información confidencial que posean sobre otros prestadores, sin importar la razón o circunstancia por la que tengan acceso a ella.</li>
+		<li>Ambos prestadores están obligados a implementar todas las acciones necesarias para salvaguardar estos datos. El incumplimiento de esta norma los expone directamente a acciones legales por parte de las autoridades competentes.</li>
+
+                </ul>
+            </div>
+
+        </div>
+
+        <h2 class="section-title">2. Incorporaciones y Ajustes Operativos (Bioagrícola)</h2>
+        <div class="card-grid">
+
+            <div class="card">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135692.png" alt="Icono Invitados" class="card-icon">
+                <h2>Invitados al Comité (Art. 15)</h2>
+                <ul>
+                    <li>Cada prestadora podrá designar hasta un (1) invitado por sesión, previa concertación.</li>
+                    <li>Para hacer efectiva su asistencia, el Representante Legal deberá notificar formalmente los datos de identificación del invitado con una antelación mínima de tres (3) días hábiles anteriores a la fecha programada.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <img src="https://cdn-icons-png.flaticon.com/512/1055/1055661.png" alt="Icono Reportes de Información" class="card-icon">
+                <h2>Deberes Persona Prestadora de la Actividad de Aprovechamiento (Art. 4)</h2>
+                <ul>
+                    <li><strong>Literal F:</strong> Informar a BIOAGRICOLA de manera inmediata si se encuentra en proceso de reversión y/o aplazamientos de información que afecte el cálculo de la tarifa.</li>
+                    <li><strong>Literal G:</strong> Trasladar a BIOAGRICOLA los requerimientos y respuestas de la SSPD que tengan incidencia en los cargues de toneladas en el SUI, garantizando la trazabilidad.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <img src="https://cdn-icons-png.flaticon.com/512/2643/2643268.png" alt="Icono Ajustes de Facturación" class="card-icon">
+                <h2>Ajustes en Facturación (Art. 11)</h2>
+                <ul>
+                    <li>En eventos donde los ajustes generen un incremento superior al diez por ciento (10%) en el valor de la tarifa final, se establecerá un plan de facturación proporcional.</li>
+                    <li>El plazo máximo para completar dicho ajuste no podrá exceder la mitad del periodo en el cual se originó.</li>
+                    <li>BIOAGRICOLA se reserva la facultad de ejecutar la facturación en un término menor, garantizando la recuperación eficiente de los recursos.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <img src="https://cdn-icons-png.flaticon.com/512/9191/9191042.png" alt="Icono Devoluciones" class="card-icon">
+                <h2>Capítulo 2. De las Devoluciones</h2>
+                <div class="card-subtitle">Devoluciones a Suscriptores (Art. 34)</div>
+                <ul>
+                    <li> En el caso de proceder devoluciones como consecuencia de cobros no autorizados, la persona prestadora debe devolver los recursos a BIOAGRICOLA, quien realizará el cruce de cuentas a favor del usuario en la factura.</li>
+<li> Se sugiere mantener <strong>Procedimiento (ANEXO 1)</strong> </li>
+
+                </ul>
+            </div>
+
+            <div class="card">
+                <img src="https://images.icon-icons.com/3188/PNG/512/payment_icon_194171.png" alt="Icono Devoluciones Prestadores" class="card-icon">
+                <h2>Plan de Pagos y RUPS (Art. 36 y 37)</h2>
+                <ul>
+                    <li>Ante cobros no autorizados por sobreestimación, el plan de pagos se suscribirá mediante el <strong>ANEXO 2 REGLAMENTO CCC</strong>, y su ejecución no podrá superar la mitad del período de causación.</li>
+                    <li>Personas prestadoras con RUPS cancelado que adeuden recursos por errores o subestimación: Se dejará constancia en acta del valor adeudado y se procederá a informar a la SSPD.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="participation-section">
+            <img src="https://cdn-icons-png.freepik.com/512/7169/7169630.png" alt="Icono de Preguntas y Comentarios" class="participation-icon">
+            <h2>Espacio de Participación</h2>
+            <p>Se abre la sesión para interactuar sobre el articulado del reglamento:</p>
+            <ul class="participation-list">
+                <li>💡 Preguntas y Aclaraciones</li>
+                <li>📝 Observaciones</li>
+                <li>🤝 Consensos</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>BIOAGRICOLA DEL LLANO S.A. E.S.P. BIC</p>
+    </footer>
+
+</body>
+</html>
